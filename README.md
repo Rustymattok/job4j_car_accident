@@ -12,3 +12,5 @@ Intruders - registration
 Вид системы. Главная страница - это поиск с таблицей.
 
 Под этот проект создайте новый репозиторий job4j_car_accident
+
+#stack technology
