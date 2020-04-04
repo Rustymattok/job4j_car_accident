@@ -1,5 +1,8 @@
 package di;
 
+/**
+ * Concle for DI
+ */
 public class ConcoleInput {
 
     public void show(StartUI st){
