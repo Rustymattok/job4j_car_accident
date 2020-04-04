@@ -3,9 +3,11 @@ package di;
 public class StartUI {
 
     private Store store;
+    private ConcoleInput cl;
 
-    public StartUI(Store store) {
+    public StartUI(Store store,ConcoleInput cl) {
         this.store = store;
+        this.cl = cl;
     }
 
     public void add(String value) {
@@ -13,6 +15,7 @@ public class StartUI {
     }
 
     public void print() {
+        cl.show();
         for (String value : store.getAll()) {
             System.out.println(value);
         }
