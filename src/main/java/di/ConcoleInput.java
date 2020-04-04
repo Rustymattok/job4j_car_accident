@@ -5,9 +5,8 @@ package di;
  */
 public class ConcoleInput {
 
-    public void show(StartUI st){
+    public void show(){
         System.out.println("Test show() method");
         System.out.println("All parameters: ");
-        st.print();
     }
 }
