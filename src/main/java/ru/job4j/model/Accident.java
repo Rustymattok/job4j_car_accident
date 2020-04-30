@@ -1,8 +1,6 @@
 package ru.job4j.model;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
+
 import javax.persistence.*;
 /**
  * Model for Accident. Coonection with Data table.
@@ -12,11 +10,12 @@ import javax.persistence.*;
 @Data
 @RequiredArgsConstructor
 @NoArgsConstructor
+@ToString
 public class Accident {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int id;
+    @ToString.Exclude private int id;
     @NonNull
     @Column(name = "name")
     private String name;
@@ -26,4 +25,6 @@ public class Accident {
     @NonNull
     @Column(name = "address")
     private String address;
+
+
 }
