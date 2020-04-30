@@ -20,7 +20,7 @@
     <h1 class="display-4">CAR ACCIDENT REGISTRATION</h1>
     <p class="lead">You may see registered accident and add new one</p>
     <p class="lead">
-        <a class="btn btn-primary btn-lg" href="#" role="button">ADD ACCIDNET</a>
+        <a class="btn btn-primary btn-lg" href="/accident" role="button">ADD ACCIDNET</a>
     </p>
 </div>
 <table class="table">
