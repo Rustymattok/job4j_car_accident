@@ -10,8 +10,9 @@ import javax.servlet.ServletRegistration;
 /**
  * Class for WEB Intializer. Connect conntext and dispatcherServlet.
  */
-public class MainWebAppInitializer  implements WebApplicationInitializer {
-    @Override
+public class MainWebAppInitializer {
+//        implements WebApplicationInitializer {
+//    @Override
     public void onStartup(final ServletContext sc) throws ServletException {
         AnnotationConfigWebApplicationContext root =
                 new AnnotationConfigWebApplicationContext();
