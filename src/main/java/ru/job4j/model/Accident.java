@@ -15,7 +15,7 @@ public class Accident {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    @ToString.Exclude private int id;
+    @ToString.Exclude private Integer id;
     @NonNull
     @Column(name = "name")
     private String name;
@@ -25,6 +25,4 @@ public class Accident {
     @NonNull
     @Column(name = "address")
     private String address;
-
-
 }
