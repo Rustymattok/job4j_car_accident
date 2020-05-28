@@ -1,34 +1,35 @@
 package ru.job4j.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 import ru.job4j.model.Accident;
-import ru.job4j.repository.AccidentRepository;
-import ru.job4j.service.AccidentStore;
+import ru.job4j.model.User;
+import ru.job4j.service.AccidentService;
 
 @Controller
 @RequestMapping("/accident")
 @SessionAttributes(types = Accident.class)
 public class AccidentController {
-    private final AccidentStore accidentStore;
+    private  AccidentService accidentStore;
+
     @Autowired
-    public AccidentController(AccidentStore accidentStore) {
+    public AccidentController(AccidentService accidentStore) {
         this.accidentStore = accidentStore;
     }
 
     @GetMapping
-    public ModelAndView accidentPage(){
-        ModelAndView model = new ModelAndView();
-        model.addObject("modelAccident",new Accident());
-        model.setViewName("accident");
-        return model;
+    public String accidentPage(Model model){
+        model.addAttribute("modelAccident", new Accident());
+        return "accident";
     }
 
     @PostMapping
     public String fillForm(@ModelAttribute("modelAccident")Accident accident){
+        User user = (User) org.springframework.security.core.context.SecurityContextHolder
+                .getContext().getAuthentication().getPrincipal();
+        accident.setAuthor(user);
         accidentStore.add(accident);
-       // AccidentRepository.getINSTANCE().add(accident);
         return "redirect:/police";
     }
 

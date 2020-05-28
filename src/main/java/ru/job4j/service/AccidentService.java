@@ -1,44 +1,22 @@
 package ru.job4j.service;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import ru.job4j.model.Accident;
-import ru.job4j.repository.AccidentRepo;
+import ru.job4j.model.Role;
+import ru.job4j.model.User;
+
 import java.util.List;
+import java.util.Set;
+
 /**
- * Logic of application. (Data -> Spring connection)
+ * Common inteface for DataBase. For Crud.
  */
-@Service
-public class AccidentService implements AccidentStore {
-    private final AccidentRepo accidentRepo;
-    @Autowired
-    public AccidentService(AccidentRepo accidentRepo) {
-        this.accidentRepo = accidentRepo;
-    }
+public interface AccidentService {
+    void add(Accident accident);
 
-    @Override
-    @Transactional
-    public void add(Accident accident) {
-        System.out.println("try to add?");
-        System.out.println(accident.getName());
-        accidentRepo.save(accident);
-    }
+    List<Accident> get();
 
-    @Override
-    @Transactional
-    public List<Accident> get() {
-        return (List<Accident>) accidentRepo.findAll();
-    }
+    List<Accident> findAllByAuthor(User author);
 
-    @Override
-    @Transactional
-    public void remove(Integer id) {
-        accidentRepo.deleteById(id);
-    }
+    void remove(Long id);
 
-    @Override
-    @Transactional
-    public void update(Integer id) {
-      //todo реавлизовать доп метод в Crud.
-    }
+    void update(Long id);
 }

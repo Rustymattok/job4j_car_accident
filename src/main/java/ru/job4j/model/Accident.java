@@ -1,28 +1,34 @@
 package ru.job4j.model;
 import lombok.*;
-
 import javax.persistence.*;
 /**
  * Model for Accident. Coonection with Data table.
  */
 @Entity
-@Table(name="accident")
 @Data
 @RequiredArgsConstructor
 @NoArgsConstructor
-@ToString
+@Table(name="accident")
 public class Accident {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     @ToString.Exclude private Integer id;
     @NonNull
-    @Column(name = "name")
-    private String name;
+    @Column(name = "accidentName")
+    private String accidentName;
     @NonNull
-    @Column(name = "text")
-    private String text;
+    @Column(name = "accidentInfo")
+    private String accidentInfo;
     @NonNull
-    @Column(name = "address")
-    private String address;
+    @Column(name = "accidentAddress")
+    private String accidentAddress;
+    @NonNull
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name ="user_id")
+    private User author;
+
+    public String getAuthorName(){
+        return author != null ? author.getUsername() : "<none>";
+    }
 }

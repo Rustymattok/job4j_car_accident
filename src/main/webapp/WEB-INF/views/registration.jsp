@@ -5,9 +5,8 @@
 <html>
 <head>
     <!-- Required meta tags -->
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>Hello, world!</title>
@@ -21,32 +20,45 @@
     <p class="lead">Form for add new Accident</p>
 </div>
 
-<form:form method="POST"
-           action="/accident" modelAttribute="modelAccident">
+<form:form method="POST" action="/registration" modelAttribute="modelUser">
     <div class="form-group row">
-        <form:label class ="col-sm-2 col-form-label col-form-label-lg" path="accidentName">Name</form:label>
+        <form:label class ="col-sm-2 col-form-label col-form-label-lg" path="username">Login</form:label>
         <div class="col-sm-10">
-            <form:input type="text" class="form-control form-control-lg" path="accidentName" placeholder="Введите имя"/>
+            <form:input type="text" class="form-control form-control-lg" path="username" placeholder="Введите логин"/>
         </div>
     </div>
 
     <div class="form-group row">
-        <form:label class ="col-sm-2 col-form-label col-form-label-lg" path="accidentInfo">Info accident</form:label>
+        <form:label class ="col-sm-2 col-form-label col-form-label-lg" path="password">Password</form:label>
         <div class="col-sm-10">
-            <form:input type="text" class="form-control form-control-lg" path="accidentInfo" placeholder="Опишите проишествие"/>
+            <form:input type="text" class="form-control form-control-lg" path="password" placeholder="Введите пароль"/>
         </div>
     </div>
 
     <div class="form-group row">
-        <form:label class ="col-sm-2 col-form-label col-form-label-lg" path="accidentAddress">Address</form:label>
+        <form:label class ="col-sm-2 col-form-label col-form-label-lg" path="firstName">FirstName</form:label>
         <div class="col-sm-10">
-                <form:input type="text" class="form-control form-control-lg" path="accidentAddress" placeholder="Введите адресс происшествия"/>
+            <form:input type="text" class="form-control form-control-lg" path="firstName" placeholder="Введите имя"/>
         </div>
+    </div>
+
+    <div class="form-group row">
+        <form:label class ="col-sm-2 col-form-label col-form-label-lg" path="lastName">SecondName</form:label>
+        <div class="col-sm-10">
+            <form:input type="text" class="form-control form-control-lg" path="lastName" placeholder="Введите Фамилию"/>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <form:label class ="col-sm-2 col-form-label col-form-label-lg" path="email">MailBox</form:label>
+        <div class="col-sm-10">
+            <form:input type="text" class="form-control form-control-lg" path="email" placeholder="Введите email"/>
+        </div>
+    </div>
+    <div class="col-auto">
+        <button type="submit" class="btn btn-primary mb-2">Submit</button>
     </div>
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-    <div class="col-auto">
-    <button type="submit" class="btn btn-primary mb-2">Submit</button>
-    </div>
 </form:form>
 
 </body>

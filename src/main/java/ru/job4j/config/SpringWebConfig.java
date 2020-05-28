@@ -15,10 +15,7 @@ import org.springframework.web.servlet.view.JstlView;
 @Configuration
 @ComponentScan("ru.job4j.controller")
 public class SpringWebConfig implements WebMvcConfigurer {
-    //todo не совсем понятна суть,нужны примеры.
-    /*
-        propreties for resources.
-     */
+
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
        registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
@@ -29,6 +26,7 @@ public class SpringWebConfig implements WebMvcConfigurer {
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/").setViewName("index");
+        registry.addViewController("/login").setViewName("login");
     }
     /*
         Add viewers - type. This is case of JSP viewer
