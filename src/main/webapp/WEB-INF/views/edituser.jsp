@@ -21,15 +21,12 @@
     <h1 class="display-4">EDIT USER ACCIDENT</h1>
 </div>
 
-<form:form method="POST"
-           action="/admin" modelAttribute="user">
-    <div><label> Login : <input type="text" name="username"  value="${user.username}" /> </label></div>
-    <c:forEach var = "role" items="${roles}">
-    <div>
-    <label><input type="checkbox" name="${role}" ${user.roles.contains(role)?"checked":""}>${role}</label>
-    </div>
-    </c:forEach>
-    <input type="hidden" value="${user.id}" name="userId">
+<form:form method="POST" action="/admin" modelAttribute="user">
+    <div><label> Login :
+        <form:input type="text" class="form-control form-control-lg" path="username" value="${user.username}" />
+    </label></div>
+    <form:checkboxes element="li" path="roles" items="${roles}"/>
+    <form:input type="hidden" path="id" value="${user.id}"  />
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
     <div class="col-auto">
         <input type="submit"  class="btn btn-primary mb-2" value="Save"/>

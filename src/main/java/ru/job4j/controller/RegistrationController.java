@@ -37,28 +37,4 @@ public class RegistrationController {
         return "redirect:/login";
     }
 
-//    @Autowired
-//    public TestSimulate(UserService userService, SecurityService securityService, UserValidator userValidator) {
-//        this.userService = userService;
-//        this.securityService = securityService;
-//        this.userValidator = userValidator;
-//    }
-//
-//    @GetMapping
-//    public String registration(Model model){
-//        model.addAttribute("userForm",new User());
-//        return "registration";
-//    }
-//
-//    @PostMapping
-//    public  String registration(@ModelAttribute("userForm") User userForm, Model model){
-////        userValidator.validate(userForm,bindingResult);
-////        if(bindingResult.hasErrors()){
-////            return "registration";
-////        }
-//        userService.save(userForm);
-//        securityService.autoLogin(userForm.getUsername(),userForm.getConfirmPassword());
-//        return "redirect:/";
-//    }
-
 }

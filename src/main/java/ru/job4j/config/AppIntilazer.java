@@ -1,7 +1,10 @@
 package ru.job4j.config;
+import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.filter.CharacterEncodingFilter;
+import org.springframework.web.servlet.DispatcherServlet;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
-import javax.servlet.Filter;
+
+import javax.servlet.*;
 
 public class AppIntilazer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
@@ -25,6 +28,8 @@ public class AppIntilazer extends AbstractAnnotationConfigDispatcherServletIniti
         CharacterEncodingFilter characterEncodingFilter = new CharacterEncodingFilter();
         characterEncodingFilter.setEncoding("UTF-8");
         characterEncodingFilter.setForceEncoding(true);
+        characterEncodingFilter.setForceRequestEncoding(true);
         return new Filter[] {characterEncodingFilter};
     }
+
 }

@@ -6,11 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import ru.job4j.model.Role;
 import ru.job4j.model.User;
 import ru.job4j.repository.UserRepo;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping(value ="/admin",produces = {"application/xml; charset=UTF-8"})
@@ -38,25 +34,12 @@ public class AdminController {
     }
 
     @PostMapping
-    public String userSave(
-            @RequestParam("userId") Long id,
-            @RequestParam Map<String, String> form,
-            @RequestParam String username){
-        User user = userRepo.findUserById(id);
-        Set<String> roles = Arrays.stream(Role.values())
-                .map(Role::name)
-                .collect(Collectors.toSet());
-        user.getRoles().clear();
-        for (String key : form.keySet()) {
-            if (roles.contains(key)) {
-                user.getRoles().add(Role.valueOf(key));
-            }
-        }
-        userRepo.save(user);
+    public String userSave(@ModelAttribute("user") User user){
+        User userForm = userRepo.findUserById(user.getId());
+        userForm.getRoles().clear();
+        userForm.setRoles(user.getRoles());
+        userRepo.save(userForm);
         return "redirect:/admin";
-
     }
-
-
 
 }
